@@ -4,7 +4,7 @@ import getMeals from "@/lib/products";
 export default function Home() {
   const meals = getMeals();
   return (
-    <main className="py-16 px-20">
+    <main className="px-4 py-2 md:py-16 md:px-20">
       <ProductList products={meals} />
     </main>
   );
