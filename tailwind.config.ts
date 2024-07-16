@@ -8,6 +8,7 @@ const config: Config = {
   ],
   theme: {
     colors: {
+      white: "hsl(0, 100%, 100%)",
       red: "hsl(14, 86%, 42%)",
       green: "hsl(159, 69%, 38%)",
       "rose-50": "hsl(20, 50%, 98%)",
