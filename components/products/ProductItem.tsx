@@ -1,5 +1,9 @@
-type ProductItemProps = {};
+import { Product } from "@/types/product";
 
-export default function ProductItem(props: ProductItemProps) {
+type ProductItemProps = {
+  product: Product;
+};
+
+export default function ProductItem({ product }: ProductItemProps) {
   return <div></div>;
 }

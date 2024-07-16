@@ -1,15 +1,18 @@
-import { Meal } from "@/types/meal";
+import { Product } from "@/types/product";
+import ProductItem from "./ProductItem";
 
 type ProductListProps = {
-  meals: Meal[];
+  products: Product[];
 };
 
-export default function ProductList(props: ProductListProps) {
+export default function ProductList({ products }: ProductListProps) {
   return (
     <div>
       <h1 className="font-bold">Desserts</h1>
       <ul>
-        <li></li>
+        {products.map((product) => (
+          <ProductItem key={product.name} product={product} />
+        ))}
       </ul>
     </div>
   );

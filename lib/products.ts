@@ -1,5 +1,5 @@
 import data from "@/data/data.json";
 
-export default function getMeals() {
+export default function getProducts() {
   return data;
 }

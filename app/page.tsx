@@ -1,11 +1,11 @@
 import ProductList from "@/components/products/ProductList";
-import getMeals from "@/lib/meals";
+import getMeals from "@/lib/products";
 
 export default function Home() {
   const meals = getMeals();
   return (
     <main>
-      <ProductList meals={meals} />
+      <ProductList products={meals} />
     </main>
   );
 }
