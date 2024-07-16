@@ -1,7 +1,11 @@
+import ProductList from "@/components/products/ProductList";
+import getMeals from "@/lib/meals";
+
 export default function Home() {
+  const meals = getMeals();
   return (
     <main>
-      <h1 className="font-bold">Desserts</h1>
+      <ProductList meals={meals} />
     </main>
   );
 }
