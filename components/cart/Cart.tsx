@@ -11,22 +11,24 @@ export default function Cart() {
     (acc, item) => acc + item.quantity,
     0
   );
+
+  let content: JSX.Element | JSX.Element[] = <EmptyCart />;
+
+  if (cartItems.length > 0) {
+    content = cartItems.map((item) => (
+      <CartItem
+        key={item.product.id}
+        product={item.product}
+        quantity={item.quantity}
+      />
+    ));
+  }
   return (
     <div className=" bg-white my-4 px-6 pb-10 w-full rounded-md md:my-0 md:w-auto md:min-w-96">
       <h2 className="justify-self-start text-red text-2xl font-bold mt-6 mb-2">
         Your Cart ({cartItemQuantity})
       </h2>
-      {cartItems.length > 0 ? (
-        cartItems.map((item) => (
-          <CartItem
-            key={item.product.id}
-            product={item.product}
-            quantity={item.quantity}
-          />
-        ))
-      ) : (
-        <EmptyCart />
-      )}
+      {content}
     </div>
   );
 }
