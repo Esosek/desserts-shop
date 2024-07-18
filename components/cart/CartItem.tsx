@@ -1,3 +1,6 @@
+import { useContext } from "react";
+
+import CartContext from "@/context/CartContext";
 import { Product } from "@/types/product";
 
 type CartItemProps = {
@@ -6,11 +9,10 @@ type CartItemProps = {
 };
 
 export default function CartItem({ product, quantity }: CartItemProps) {
+  const { removeItem } = useContext(CartContext);
   const totalProductPrice = (product.price * quantity).toFixed(2);
 
-  function handleRemoveClick() {
-    console.log("Removing product", product.id, product.name, "from cart");
-  }
+  const handleRemoveClick = () => removeItem(product.id, quantity);
 
   return (
     <div className="flex justify-between items-center border-b-[1px] border-rose-100 py-4">
