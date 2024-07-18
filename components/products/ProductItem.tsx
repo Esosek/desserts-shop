@@ -25,7 +25,7 @@ export default function ProductItem({ product }: ProductItemProps) {
         Add to Cart
       </button>
       <p className="text-sm text-rose-300 mb-1">{product.category}</p>
-      <p className="font-semibold">{product.name}</p>
+      <h2 className="font-semibold">{product.name}</h2>
       <p className="text-red font-semibold">${product.price.toPrecision(3)}</p>
     </li>
   );
