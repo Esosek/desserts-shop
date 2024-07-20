@@ -19,7 +19,7 @@ export default function CartItem({ product, quantity }: CartItemProps) {
       <div className="text-sm">
         <h3 className="font-semibold">{product.name}</h3>
         <p className="space-x-2">
-          <span className="text-red font-semibold">{quantity}x </span>
+          <span className="text-red-400 font-semibold">{quantity}x </span>
           <span className="text-rose-400">@ ${product.price.toFixed(2)} </span>
           <span className="text-rose-500 font-semibold">
             ${totalProductPrice}
