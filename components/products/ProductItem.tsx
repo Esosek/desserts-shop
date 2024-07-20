@@ -1,14 +1,23 @@
+"use client";
 import Image from "next/image";
-
-import iconCart from "@/public/assets/images/icon-add-to-cart.svg";
+import { useContext, useMemo } from "react";
 
 import { Product } from "@/types/product";
+import AddProductBtn from "./AddProductBtn";
+import CartContext from "@/context/CartContext";
 
 type ProductItemProps = {
   product: Product;
 };
 
 export default function ProductItem({ product }: ProductItemProps) {
+  const { items } = useContext(CartContext);
+
+  const quantity = useMemo(() => {
+    const item = items.find((item) => item.product.id === product.id);
+    return item ? item.quantity : 0;
+  }, [items, product.id]);
+
   return (
     <li className="w-full">
       <div className="w-full rounded-md overflow-clip">
@@ -29,10 +38,7 @@ export default function ProductItem({ product }: ProductItemProps) {
           />
         </picture>
       </div>
-      <button className="flex items-center gap-2 mx-auto bg-white border-rose-400 font-semibold text-sm border-[1px] rounded-full py-3 px-6 -translate-y-5 hover:text-red-400 hover:border-red transition-colors duration-100">
-        <Image src={iconCart} alt="Cart icon" />
-        Add to Cart
-      </button>
+      <AddProductBtn quantity={quantity ?? 0} />
       <p className="text-sm text-rose-300 mb-1">{product.category}</p>
       <h2 className="font-semibold">{product.name}</h2>
       <p className="text-red-400 font-semibold">
