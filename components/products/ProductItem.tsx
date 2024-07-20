@@ -11,14 +11,23 @@ type ProductItemProps = {
 export default function ProductItem({ product }: ProductItemProps) {
   return (
     <li className="w-full">
-      <div className="relative h-60 w-full rounded-md overflow-clip">
-        <Image
-          src={product.image.desktop}
-          alt={`Image of ${product.name}`}
-          fill
-          priority
-          className="object-cover"
-        />
+      <div className="w-full rounded-md overflow-clip">
+        <picture className="block relative h-60">
+          <source srcSet={product.image.mobile} media="(max-width: 640px)" />
+          <source
+            srcSet={product.image.tablet}
+            media="(min-width: 641px) and (max-width: 1023px)"
+          />
+          <source srcSet={product.image.desktop} media="(min-width: 1024px)" />
+          <Image
+            src={product.image.desktop}
+            alt={`Image of ${product.name}`}
+            fill
+            priority
+            sizes="(max-width: 640px) 100vw, (max-width: 1023px) 100vw, 100vw"
+            className="object-cover"
+          />
+        </picture>
       </div>
       <button className="flex items-center gap-2 mx-auto bg-white border-rose-400 font-semibold text-sm border-[1px] rounded-full py-3 px-6 -translate-y-5 hover:text-red hover:border-red transition-colors duration-100">
         <Image src={iconCart} alt="Cart icon" />
