@@ -10,7 +10,7 @@ type ProductItemProps = {
 
 export default function ProductItem({ product }: ProductItemProps) {
   return (
-    <li className="w-full sm:max-w-60">
+    <li className="w-full">
       <div className="relative h-60 w-full rounded-md overflow-clip">
         <Image
           src={product.image.desktop}

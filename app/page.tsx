@@ -6,7 +6,7 @@ import getMeals from "@/lib/products";
 export default function Home() {
   const meals = getMeals();
   return (
-    <main className="flex flex-col items-start gap-4 px-4 py-2 md:py-16 md:px-20 md:flex-row">
+    <main className="grid justify-items-center items-start gap-8 px-4 py-2 md:py-16 md:px-20 md:grid-cols-[1fr_auto]">
       <CartContextProvider>
         <ProductList products={meals} />
         <Cart />
