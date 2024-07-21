@@ -13,16 +13,27 @@ export default function AddProductBtn({ quantity }: AddProductBtnProps) {
 
   function handleIncrement() {}
   return quantity > 0 ? (
-    <div className="flex items-center justify-between gap-2 min-w-40 w-fit mx-auto text-rose-50 bg-red-400 border-red-400 font-semibold text-sm border-[1px] rounded-full py-3 px-6 -translate-y-5">
-      <button onClick={handleDecrement}>
-        <Image src={iconDecrement} alt="Decrement icon" />
+    <div className="flex items-center justify-between gap-2 min-w-40 w-fit mx-auto text-rose-50 bg-red-400 border-red-400 font-semibold text-sm border-[1px] rounded-full py-3 px-3 -translate-y-5">
+      <button
+        onClick={handleDecrement}
+        className="size-5 rounded-full border-[1px] border-rose-100 p-1"
+      >
+        <Image
+          src={iconDecrement}
+          alt="Decrement icon"
+          className="w-full h-full"
+        />
       </button>
       {quantity}
       <button
         onClick={handleIncrement}
-        className="rounded-full border-[1px] border-rose-100 p-1"
+        className="size-5 rounded-full border-[1px] border-rose-100 p-1"
       >
-        <Image src={iconIncrement} alt="Increment icon" />
+        <Image
+          src={iconIncrement}
+          alt="Increment icon"
+          className="w-full h-full"
+        />
       </button>
     </div>
   ) : (
