@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import iconCarbonNeutral from "@/public/assets/images/icon-carbon-neutral.svg";
 
@@ -12,6 +12,8 @@ import PrimaryButton from "../ui/PrimaryButton";
 
 export default function Cart() {
   const cartItems = useContext(CartContext).items;
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+
   const cartItemQuantity = cartItems.reduce(
     (acc, item) => acc + item.quantity,
     0
@@ -20,7 +22,16 @@ export default function Cart() {
     .reduce((acc, item) => acc + item.quantity * item.product.price, 0)
     .toFixed(2);
 
-  const handleConfirm = () => {};
+  function handleConfirm() {
+    setIsConfirmOpen(true);
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal() {
+    // clear cart
+    setIsConfirmOpen(false);
+    document.body.style.overflow = "auto";
+  }
 
   let content: JSX.Element | JSX.Element[] = <EmptyCart />;
 
@@ -52,7 +63,10 @@ export default function Cart() {
   }
   return (
     <>
-      <ConfirmModal onClose={() => {}} />
+      {isConfirmOpen && (
+        <ConfirmModal totalPrice={totalPrice} onClose={closeModal} />
+      )}
+
       <div className=" bg-white my-4 px-6 w-full rounded-md md:my-0 md:w-auto md:min-w-96">
         <h2 className="justify-self-start text-red-400 text-2xl font-bold mt-6 mb-2">
           Your Cart ({cartItemQuantity})

@@ -7,10 +7,14 @@ import CartContext from "@/context/CartContext";
 import PrimaryButton from "../ui/PrimaryButton";
 
 type ConfirmModalProps = {
+  totalPrice: string;
   onClose: () => void;
 };
 
-export default function ConfirmModal({ onClose }: ConfirmModalProps) {
+export default function ConfirmModal({
+  totalPrice,
+  onClose,
+}: ConfirmModalProps) {
   const cartCtx = useContext(CartContext);
   return (
     <>
@@ -18,12 +22,12 @@ export default function ConfirmModal({ onClose }: ConfirmModalProps) {
         onClick={onClose}
         className="fixed top-0 bottom-0 w-full bg-black/50"
       ></div>
-      <div className="fixed bottom-0 top-[20%] bg-white w-full max-w-md rounded-xl py-4 px-8 sm:bottom-auto">
+      <div className="fixed bottom-0 bg-white w-full max-w-md rounded-xl py-4 px-8 sm:bottom-auto">
         <Image src={iconCheck} alt="Checkout icon" className="size-8 my-4" />
         <h2 className="font-bold my-2 text-3xl">Order Confirmed</h2>
         <p className="text-rose-400 text-sm">We hope you enjoy your food!</p>
         <div className="bg-rose-100 px-4 rounded-md mt-6 text-sm">
-          <ul className="overflow-y-scroll">
+          <ul className="overflow-y-scroll max-h-64">
             {cartCtx.items.map((item) => (
               <li
                 key={item.product.id}
@@ -55,7 +59,7 @@ export default function ConfirmModal({ onClose }: ConfirmModalProps) {
             ))}
           </ul>
           <p className="flex justify-between items-center py-4">
-            Order Total <span className="font-bold text-lg">${46.5}</span>
+            Order Total <span className="font-bold text-lg">${totalPrice}</span>
           </p>
         </div>
         <PrimaryButton onClick={onClose}>Start New Order</PrimaryButton>
