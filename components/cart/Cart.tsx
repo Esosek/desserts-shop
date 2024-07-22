@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useContext } from "react";
 
 import iconCarbonNeutral from "@/public/assets/images/icon-carbon-neutral.svg";
@@ -6,7 +7,8 @@ import iconCarbonNeutral from "@/public/assets/images/icon-carbon-neutral.svg";
 import EmptyCart from "./EmptyCart";
 import CartContext from "@/context/CartContext";
 import CartItem from "./CartItem";
-import Image from "next/image";
+import ConfirmModal from "./ConfirmModal";
+import PrimaryButton from "../ui/PrimaryButton";
 
 export default function Cart() {
   const cartItems = useContext(CartContext).items;
@@ -17,6 +19,8 @@ export default function Cart() {
   const totalPrice = cartItems
     .reduce((acc, item) => acc + item.quantity * item.product.price, 0)
     .toFixed(2);
+
+  const handleConfirm = () => {};
 
   let content: JSX.Element | JSX.Element[] = <EmptyCart />;
 
@@ -42,18 +46,19 @@ export default function Cart() {
             delivery
           </p>
         </div>
-        <button className="bg-red-400 w-full text-rose-50 rounded-full p-3 my-6 shadow-md hover:bg-red-700 transition-colors duration-100">
-          Confirm Order
-        </button>
+        <PrimaryButton onClick={handleConfirm}>Confirm Order</PrimaryButton>
       </>
     );
   }
   return (
-    <div className=" bg-white my-4 px-6 w-full rounded-md md:my-0 md:w-auto md:min-w-96">
-      <h2 className="justify-self-start text-red-400 text-2xl font-bold mt-6 mb-2">
-        Your Cart ({cartItemQuantity})
-      </h2>
-      {content}
-    </div>
+    <>
+      <ConfirmModal onClose={() => {}} />
+      <div className=" bg-white my-4 px-6 w-full rounded-md md:my-0 md:w-auto md:min-w-96">
+        <h2 className="justify-self-start text-red-400 text-2xl font-bold mt-6 mb-2">
+          Your Cart ({cartItemQuantity})
+        </h2>
+        {content}
+      </div>
+    </>
   );
 }

@@ -9,6 +9,7 @@ const config: Config = {
   theme: {
     colors: {
       white: "hsl(0, 100%, 100%)",
+      black: "hsl(0, 100%, 0%)",
       "red-400": "hsl(14, 86%, 42%)",
       "red-700": "hsl(14, 86%, 30%)",
       green: "hsl(159, 69%, 38%)",
