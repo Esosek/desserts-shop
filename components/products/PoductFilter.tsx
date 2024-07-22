@@ -29,6 +29,7 @@ export default function ProductFilter({
         id="filter-select"
         name="filter-select"
         onChange={handleFilterChange}
+        className="p-2 rounded-md bg-rose-100"
       >
         <option value="none">None</option>
         {categories.map((cat) => (
