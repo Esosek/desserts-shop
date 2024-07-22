@@ -44,7 +44,7 @@ export default function ProductItem({ product }: ProductItemProps) {
           />
         </picture>
       </div>
-      <AddProductBtn quantity={quantity ?? 0} />
+      <AddProductBtn product={product} quantity={quantity ?? 0} />
       <p className="text-sm text-rose-300 mb-1">{product.category}</p>
       <h2 className="font-semibold">{product.name}</h2>
       <p className="text-red-400 font-semibold">
