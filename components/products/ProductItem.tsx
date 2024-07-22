@@ -24,7 +24,7 @@ export default function ProductItem({ product }: ProductItemProps) {
     <li className="w-full">
       <div
         className={`${
-          isSelected ? "border-2 border-red-400" : undefined
+          isSelected ? "ring-2 ring-red-400" : undefined
         } w-full rounded-md overflow-clip`}
       >
         <picture className="block relative h-60">

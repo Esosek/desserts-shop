@@ -18,7 +18,7 @@ export default function AddProductBtn({
   const { addItem, removeItem } = useContext(CartContext);
 
   const handleDecrement = () => removeItem(product.id, 1);
-  const handleIncrement = () => addItem(product);
+  const handleAddItem = () => addItem(product);
 
   return quantity > 0 ? (
     <div className="flex items-center justify-between gap-2 min-w-40 w-fit mx-auto text-rose-50 bg-red-400 border-red-400 font-semibold text-sm border-[1px] rounded-full py-3 px-3 -translate-y-5">
@@ -39,7 +39,7 @@ export default function AddProductBtn({
       </button>
       {quantity}
       <button
-        onClick={handleIncrement}
+        onClick={handleAddItem}
         className="group size-5 rounded-full border-[1px] border-rose-50 p-1 hover:bg-rose-50"
       >
         <svg
@@ -58,7 +58,10 @@ export default function AddProductBtn({
       </button>
     </div>
   ) : (
-    <button className="flex items-center justify-center gap-2 min-w-40 mx-auto bg-white border-rose-400 font-semibold text-sm border-[1px] rounded-full py-3 px-6 -translate-y-5 hover:text-red-400 hover:border-red transition-colors duration-100">
+    <button
+      onClick={handleAddItem}
+      className="flex items-center justify-center gap-2 min-w-40 mx-auto bg-white border-rose-400 font-semibold text-sm border-[1px] rounded-full py-3 px-6 -translate-y-5 hover:text-red-400 hover:border-red transition-colors duration-100"
+    >
       <Image src={iconCart} alt="Cart icon" />
       Add to Cart
     </button>
