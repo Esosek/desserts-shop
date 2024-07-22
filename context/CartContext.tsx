@@ -19,38 +19,9 @@ const defaultValue = {
 const CartContext = createContext<CartContextType>(defaultValue);
 
 export function CartContextProvider({ children }: PropsWithChildren) {
-  const [items, setItems] = useState([
-    {
-      product: {
-        id: 0,
-        image: {
-          thumbnail: "/assets/images/image-waffle-thumbnail.jpg",
-          mobile: "/assets/images/image-waffle-mobile.jpg",
-          tablet: "/assets/images/image-waffle-tablet.jpg",
-          desktop: "/assets/images/image-waffle-desktop.jpg",
-        },
-        name: "Waffle with Berries",
-        category: "Waffle",
-        price: 6.5,
-      },
-      quantity: 3,
-    },
-    {
-      product: {
-        id: 1,
-        image: {
-          thumbnail: "/assets/images/image-creme-brulee-thumbnail.jpg",
-          mobile: "/assets/images/image-creme-brulee-mobile.jpg",
-          tablet: "/assets/images/image-creme-brulee-tablet.jpg",
-          desktop: "/assets/images/image-creme-brulee-desktop.jpg",
-        },
-        name: "Vanilla Bean Crème Brûlée",
-        category: "Crème Brûlée",
-        price: 7.0,
-      },
-      quantity: 1,
-    },
-  ]);
+  const [items, setItems] = useState<{ product: Product; quantity: number }[]>(
+    []
+  );
 
   function addItem(product: Product) {
     setItems((prevItems) => {
