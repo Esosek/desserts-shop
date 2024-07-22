@@ -2,8 +2,8 @@
 import Image from "next/image";
 import { useContext } from "react";
 
-import iconCheck from "@/public/assets/images/icon-order-confirmed.svg";
 import CartContext from "@/context/CartContext";
+import iconCheck from "@/public/assets/images/icon-order-confirmed.svg";
 import PrimaryButton from "../ui/PrimaryButton";
 
 type ConfirmModalProps = {

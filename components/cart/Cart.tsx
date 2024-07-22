@@ -4,8 +4,8 @@ import { useContext, useState } from "react";
 
 import iconCarbonNeutral from "@/public/assets/images/icon-carbon-neutral.svg";
 
-import EmptyCart from "./EmptyCart";
 import CartContext from "@/context/CartContext";
+import EmptyCart from "./EmptyCart";
 import CartItem from "./CartItem";
 import ConfirmModal from "./ConfirmModal";
 import PrimaryButton from "../ui/PrimaryButton";
