@@ -18,9 +18,15 @@ export default function ProductItem({ product }: ProductItemProps) {
     return item ? item.quantity : 0;
   }, [items, product.id]);
 
+  const isSelected = useMemo(() => quantity > 0, [quantity]);
+
   return (
     <li className="w-full">
-      <div className="w-full rounded-md overflow-clip">
+      <div
+        className={`${
+          isSelected ? "border-2 border-red-400" : undefined
+        } w-full rounded-md overflow-clip`}
+      >
         <picture className="block relative h-60">
           <source srcSet={product.image.mobile} media="(max-width: 640px)" />
           <source
