@@ -6,12 +6,14 @@ type CartContextType = {
   items: { product: Product; quantity: number }[];
   addItem: (product: Product) => void;
   removeItem: (productId: number, quantity: number) => void;
+  clearCart: () => void;
 };
 
 const defaultValue = {
   items: [],
   addItem: () => {},
   removeItem: () => {},
+  clearCart: () => {},
 };
 
 const CartContext = createContext<CartContextType>(defaultValue);
@@ -93,8 +95,10 @@ export function CartContextProvider({ children }: PropsWithChildren) {
     });
   }
 
+  const clearCart = () => setItems([]);
+
   return (
-    <CartContext.Provider value={{ items, addItem, removeItem }}>
+    <CartContext.Provider value={{ items, addItem, removeItem, clearCart }}>
       {children}
     </CartContext.Provider>
   );

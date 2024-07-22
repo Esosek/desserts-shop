@@ -11,14 +11,11 @@ import ConfirmModal from "./ConfirmModal";
 import PrimaryButton from "../ui/PrimaryButton";
 
 export default function Cart() {
-  const cartItems = useContext(CartContext).items;
+  const { items, clearCart } = useContext(CartContext);
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
 
-  const cartItemQuantity = cartItems.reduce(
-    (acc, item) => acc + item.quantity,
-    0
-  );
-  const totalPrice = cartItems
+  const cartItemQuantity = items.reduce((acc, item) => acc + item.quantity, 0);
+  const totalPrice = items
     .reduce((acc, item) => acc + item.quantity * item.product.price, 0)
     .toFixed(2);
 
@@ -28,17 +25,17 @@ export default function Cart() {
   }
 
   function closeModal() {
-    // clear cart
+    clearCart();
     setIsConfirmOpen(false);
     document.body.style.overflow = "auto";
   }
 
   let content: JSX.Element | JSX.Element[] = <EmptyCart />;
 
-  if (cartItems.length > 0) {
+  if (items.length > 0) {
     content = (
       <>
-        {cartItems.map((item) => (
+        {items.map((item) => (
           <CartItem
             key={item.product.id}
             product={item.product}
