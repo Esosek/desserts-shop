@@ -29,7 +29,7 @@ export default function ProductList({ products }: ProductListProps) {
         <ProductFilter products={products} onFilterChanged={onFilterChanged} />
       </div>
 
-      <ul className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-x-5 gap-y-7">
+      <ul className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-x-5 gap-y-7">
         {filteredProducts.map((product) => (
           <ProductItem key={product.name} product={product} />
         ))}
