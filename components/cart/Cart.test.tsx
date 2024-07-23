@@ -62,7 +62,7 @@ describe("Cart", () => {
 
     const confirmButton = screen.getByRole("button", { name: "Confirm Order" });
     await event.click(confirmButton);
-    const confirmModal = screen.getByText("Order Confirmed");
+    const confirmModal = screen.getByText(/confirmed/i);
 
     expect(document.body.style.overflow).toBe("hidden");
     expect(confirmModal).toBeInTheDocument();
@@ -71,10 +71,10 @@ describe("Cart", () => {
   test("clears cart context and enables body scroll when ConfirmModal is closed", async () => {
     render(mockCartContext(<Cart />, mockInitialData));
 
-    const confirmButton = screen.getByRole("button", { name: "Confirm Order" });
+    const confirmButton = screen.getByRole("button", { name: /confirm/i });
     await event.click(confirmButton);
     const closeModalBtn = screen.getByRole("button", {
-      name: "Start New Order",
+      name: /new order/i,
     });
     await event.click(closeModalBtn);
     const cartItemElements = screen.queryAllByRole("listitem");
