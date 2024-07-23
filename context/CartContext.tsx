@@ -1,6 +1,6 @@
 "use client";
 import { createContext, useState, type PropsWithChildren } from "react";
-import { Product } from "@/types/product";
+import { Product } from "@/types/Product.types";
 
 type CartContextType = {
   items: { product: Product; quantity: number }[];

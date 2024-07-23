@@ -5,3 +5,8 @@ export type Product = {
   category: string;
   price: number;
 };
+
+export type ProductQuantity = {
+  product: Product;
+  quantity: number;
+};

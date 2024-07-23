@@ -1,4 +1,4 @@
-import { Product } from "@/types/product";
+import { Product } from "@/types/Product.types";
 import { ChangeEvent } from "react";
 
 type ProductFilterProps = {

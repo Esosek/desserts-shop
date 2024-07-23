@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useContext, useMemo } from "react";
 
-import { Product } from "@/types/product";
+import { Product } from "@/types/Product.types";
 import AddProductBtn from "./AddProductBtn";
 import CartContext from "@/context/CartContext";
 

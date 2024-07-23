@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useContext } from "react";
 
-import { Product } from "@/types/product";
+import { Product } from "@/types/Product.types";
 import iconCart from "@/public/assets/images/icon-add-to-cart.svg";
 import CartContext from "@/context/CartContext";
 
