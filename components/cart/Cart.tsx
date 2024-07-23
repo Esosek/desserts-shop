@@ -35,13 +35,15 @@ export default function Cart() {
   if (items.length > 0) {
     content = (
       <>
-        {items.map((item) => (
-          <CartItem
-            key={item.product.id}
-            product={item.product}
-            quantity={item.quantity}
-          />
-        ))}
+        <ul>
+          {items.map((item) => (
+            <CartItem
+              key={item.product.id}
+              product={item.product}
+              quantity={item.quantity}
+            />
+          ))}
+        </ul>
         <div className="flex justify-between items-center my-4">
           <p className="text-sm">Order Total</p>
           <p className="text-lg font-bold">${totalPrice}</p>

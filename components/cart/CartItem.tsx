@@ -15,7 +15,7 @@ export default function CartItem({ product, quantity }: CartItemProps) {
   const handleRemoveClick = () => removeItem(product.id, quantity);
 
   return (
-    <div className="flex justify-between items-center border-b-[1px] border-rose-100 py-4">
+    <li className="flex justify-between items-center border-b-[1px] border-rose-100 py-4">
       <div className="text-sm">
         <h3 className="font-semibold">{product.name}</h3>
         <p className="space-x-2">
@@ -42,6 +42,6 @@ export default function CartItem({ product, quantity }: CartItemProps) {
           <path d="M8.375 9.375 5 6 1.625 9.375l-1-1L4 5 .625 1.625l1-1L5 4 8.375.625l1 1L6 5l3.375 3.375-1 1Z" />
         </svg>
       </button>
-    </div>
+    </li>
   );
 }

@@ -1,9 +1,9 @@
 "use client";
-import { createContext, useState, type PropsWithChildren } from "react";
-import { Product } from "@/types/Product.types";
+import { createContext, ReactNode, useState } from "react";
+import { Product, ProductQuantity } from "@/types/Product.types";
 
 type CartContextType = {
-  items: { product: Product; quantity: number }[];
+  items: ProductQuantity[];
   addItem: (product: Product) => void;
   removeItem: (productId: number, quantity: number) => void;
   clearCart: () => void;
@@ -17,11 +17,18 @@ const defaultValue = {
 };
 
 const CartContext = createContext<CartContextType>(defaultValue);
+export default CartContext;
 
-export function CartContextProvider({ children }: PropsWithChildren) {
-  const [items, setItems] = useState<{ product: Product; quantity: number }[]>(
-    []
-  );
+type CartContextProviderProps = {
+  children: ReactNode;
+  initialValue: ProductQuantity[];
+};
+
+export function CartContextProvider({
+  children,
+  initialValue = [],
+}: CartContextProviderProps) {
+  const [items, setItems] = useState<ProductQuantity[]>(initialValue);
 
   function addItem(product: Product) {
     setItems((prevItems) => {
@@ -74,5 +81,3 @@ export function CartContextProvider({ children }: PropsWithChildren) {
     </CartContext.Provider>
   );
 }
-
-export default CartContext;
