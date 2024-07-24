@@ -2,8 +2,9 @@ import { screen, render } from "@testing-library/react";
 import event from "@testing-library/user-event";
 
 import Cart from "./Cart";
-import { mockCartContext } from "@/context/MockCartContext";
+import MockCartContextProvider from "@/context/MockCartContext";
 import mockData from "@/data/data.json";
+import { CartContextProvider } from "@/context/CartContext";
 
 describe("Cart", () => {
   const mockInitialData = [
@@ -12,7 +13,11 @@ describe("Cart", () => {
   ];
 
   test("renders cake image and 'Your added items will appear here' when empty", () => {
-    render(mockCartContext(<Cart />, []));
+    render(
+      <MockCartContextProvider items={[]}>
+        <Cart />
+      </MockCartContextProvider>
+    );
 
     const emptyCartImg = screen.getByAltText("Image of cake");
     const emptyCartText = screen.getByText("Your added items will appear here");
@@ -22,7 +27,11 @@ describe("Cart", () => {
   });
 
   test("does not render confirm button when cart is empty", () => {
-    render(mockCartContext(<Cart />, []));
+    render(
+      <MockCartContextProvider items={[]}>
+        <Cart />
+      </MockCartContextProvider>
+    );
 
     const btnElement = screen.queryByRole("button");
 
@@ -30,7 +39,11 @@ describe("Cart", () => {
   });
 
   test("renders list items when cart is NOT empty", () => {
-    render(mockCartContext(<Cart />, mockInitialData));
+    render(
+      <MockCartContextProvider items={mockInitialData}>
+        <Cart />
+      </MockCartContextProvider>
+    );
 
     const cartItems = screen.queryAllByRole("listitem");
 
@@ -38,7 +51,11 @@ describe("Cart", () => {
   });
 
   test("renders confirm button when cart is NOT empty", () => {
-    render(mockCartContext(<Cart />, mockInitialData));
+    render(
+      <MockCartContextProvider items={mockInitialData}>
+        <Cart />
+      </MockCartContextProvider>
+    );
 
     const confirmButton = screen.getByRole("button", { name: "Confirm Order" });
 
@@ -46,7 +63,11 @@ describe("Cart", () => {
   });
 
   test("correctly calculates and renders order total price", () => {
-    render(mockCartContext(<Cart />, mockInitialData));
+    render(
+      <MockCartContextProvider items={mockInitialData}>
+        <Cart />
+      </MockCartContextProvider>
+    );
     const totalPrice = mockInitialData.reduce(
       (acc: number, value) => acc + value.quantity * value.product.price,
       0
@@ -58,7 +79,11 @@ describe("Cart", () => {
   });
 
   test("opens ConfirmModal and prevents body scroll when confirm button is pressed ", async () => {
-    render(mockCartContext(<Cart />, mockInitialData));
+    render(
+      <MockCartContextProvider items={mockInitialData}>
+        <Cart />
+      </MockCartContextProvider>
+    );
 
     const confirmButton = screen.getByRole("button", { name: "Confirm Order" });
     await event.click(confirmButton);
@@ -69,7 +94,11 @@ describe("Cart", () => {
   });
 
   test("clears cart context and enables body scroll when ConfirmModal is closed", async () => {
-    render(mockCartContext(<Cart />, mockInitialData));
+    render(
+      <CartContextProvider initialValue={mockInitialData}>
+        <Cart />
+      </CartContextProvider>
+    );
 
     const confirmButton = screen.getByRole("button", { name: /confirm/i });
     await event.click(confirmButton);
