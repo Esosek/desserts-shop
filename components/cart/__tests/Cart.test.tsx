@@ -2,16 +2,11 @@ import { screen, render } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 
 import Cart from "../Cart";
-import MockCartContextProvider from "@/context/MockCartContext";
-import mockData from "@/data/data.json";
+import MockCartContextProvider, { mockData } from "@/context/MockCartContext";
+
 import { CartContextProvider } from "@/context/CartContext";
 
 describe("Cart", () => {
-  const mockInitialData = [
-    { product: { ...mockData[0], id: 0 }, quantity: 2 },
-    { product: { ...mockData[1], id: 1 }, quantity: 1 },
-  ];
-
   test("renders cake image and 'Your added items will appear here' when empty", () => {
     render(
       <MockCartContextProvider items={[]}>
@@ -40,7 +35,7 @@ describe("Cart", () => {
 
   test("renders list items when cart is NOT empty", () => {
     render(
-      <MockCartContextProvider items={mockInitialData}>
+      <MockCartContextProvider items={mockData}>
         <Cart />
       </MockCartContextProvider>
     );
@@ -52,7 +47,7 @@ describe("Cart", () => {
 
   test("renders confirm button when cart is NOT empty", () => {
     render(
-      <MockCartContextProvider items={mockInitialData}>
+      <MockCartContextProvider items={mockData}>
         <Cart />
       </MockCartContextProvider>
     );
@@ -64,11 +59,11 @@ describe("Cart", () => {
 
   test("correctly calculates and renders order total price", () => {
     render(
-      <MockCartContextProvider items={mockInitialData}>
+      <MockCartContextProvider items={mockData}>
         <Cart />
       </MockCartContextProvider>
     );
-    const totalPrice = mockInitialData.reduce(
+    const totalPrice = mockData.reduce(
       (acc: number, value) => acc + value.quantity * value.product.price,
       0
     );
@@ -80,7 +75,7 @@ describe("Cart", () => {
 
   test("opens ConfirmModal and prevents body scroll when confirm button is pressed ", async () => {
     render(
-      <MockCartContextProvider items={mockInitialData}>
+      <MockCartContextProvider items={mockData}>
         <Cart />
       </MockCartContextProvider>
     );
@@ -95,7 +90,7 @@ describe("Cart", () => {
 
   test("clears cart context and enables body scroll when ConfirmModal is closed", async () => {
     render(
-      <CartContextProvider initialValue={mockInitialData}>
+      <CartContextProvider initialValue={mockData}>
         <Cart />
       </CartContextProvider>
     );
@@ -114,7 +109,7 @@ describe("Cart", () => {
 
   test("does NOT render a cart item when its remove buttton is clicked", async () => {
     render(
-      <CartContextProvider initialValue={mockInitialData}>
+      <CartContextProvider initialValue={mockData}>
         <Cart />
       </CartContextProvider>
     );

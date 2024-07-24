@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 
+import productData from "@/data/data.json";
 import CartContext from "./CartContext";
 import { Product, ProductQuantity } from "@/types/Product.types";
 
@@ -24,3 +25,8 @@ export default function MockCartContextProvider({
     </CartContext.Provider>
   );
 }
+
+export const mockData = [
+  { product: { ...productData[0], id: 0 }, quantity: 2 },
+  { product: { ...productData[1], id: 1 }, quantity: 1 },
+];

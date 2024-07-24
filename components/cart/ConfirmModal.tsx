@@ -21,6 +21,7 @@ export default function ConfirmModal({
       <div
         onClick={onClose}
         className="fixed top-0 bottom-0 w-full bg-black/50"
+        data-testid="backdrop"
       ></div>
       <div className="fixed bottom-0 bg-white w-full max-w-md rounded-xl py-4 px-8 sm:bottom-auto">
         <Image src={iconCheck} alt="Checkout icon" className="size-8 my-4" />
