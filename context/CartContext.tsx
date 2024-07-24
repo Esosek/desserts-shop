@@ -21,7 +21,7 @@ export default CartContext;
 
 type CartContextProviderProps = {
   children: ReactNode;
-  initialValue: ProductQuantity[];
+  initialValue: ProductQuantity[]; // can initialize with data for testing purposes
 };
 
 export function CartContextProvider({
