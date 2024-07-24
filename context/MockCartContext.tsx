@@ -8,7 +8,7 @@ type MockCartContextProviderType = {
   children: ReactNode;
   items?: ProductQuantity[];
   addItem?: (product: Product) => void;
-  removeItem?: (productId: number, quantity: number) => void;
+  removeItem?: (productId: number, quantity?: number) => void;
   clearCart?: () => void;
 };
 

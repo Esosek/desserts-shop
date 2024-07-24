@@ -25,6 +25,7 @@ export default function AddProductBtn({
       <button
         onClick={handleDecrement}
         className="group size-5 rounded-full border-[1px] border-rose-50 p-1 hover:bg-rose-50"
+        data-testid="decrement-button"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -41,6 +42,7 @@ export default function AddProductBtn({
       <button
         onClick={handleAddItem}
         className="group size-5 rounded-full border-[1px] border-rose-50 p-1 hover:bg-rose-50"
+        data-testid="increment-button"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
