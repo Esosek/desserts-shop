@@ -17,7 +17,7 @@ export default function AddProductBtn({
 }: AddProductBtnProps) {
   const { addItem, removeItem } = useContext(CartContext);
 
-  const handleDecrement = () => removeItem(product.id, 1);
+  const handleDecrement = () => removeItem(product.id);
   const handleAddItem = () => addItem(product);
 
   return quantity > 0 ? (

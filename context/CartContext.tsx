@@ -5,7 +5,7 @@ import { Product, ProductQuantity } from "@/types/Product.types";
 type CartContextType = {
   items: ProductQuantity[];
   addItem: (product: Product) => void;
-  removeItem: (productId: number, quantity: number) => void;
+  removeItem: (productId: number, quantity?: number) => void;
   clearCart: () => void;
 };
 
