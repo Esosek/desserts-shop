@@ -1,7 +1,7 @@
 import { screen, render } from "@testing-library/react";
 import event, { userEvent } from "@testing-library/user-event";
 
-import Cart from "./Cart";
+import Cart from "../Cart";
 import MockCartContextProvider from "@/context/MockCartContext";
 import mockData from "@/data/data.json";
 import { CartContextProvider } from "@/context/CartContext";
