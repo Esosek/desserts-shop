@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
+import { userEvent } from "@testing-library/user-event";
 
 import CartItem from "./CartItem";
-import { CartContextProvider } from "@/context/CartContext";
-import Cart from "./Cart";
+import MockCartContextProvider from "@/context/MockCartContext";
 
 describe("CartItem", () => {
   const mockProduct = {
@@ -22,7 +22,6 @@ describe("CartItem", () => {
 
   test("renders product details and quantity", () => {
     render(mockCartItem);
-
     const productNameElement = screen.getByText("Waffle with Berries");
     const productPrice = screen.getByText("$6.50", { exact: false });
     const productQuantity = screen.getByText("3x");
@@ -35,19 +34,22 @@ describe("CartItem", () => {
   test("renders correct total price", () => {
     render(mockCartItem);
     const totalPrice = (3 * 6.5).toFixed(2);
-
     const totalPriceElement = screen.getByText(`$${totalPrice}`);
 
     expect(totalPriceElement).toBeInTheDocument();
   });
 
-  test("is NOT rendered when removed from Cart", () => {
+  test("calls removeItem with correct arguments when remove button is clicked", async () => {
+    const removeItem = jest.fn();
     render(
-      <CartContextProvider
-        initialValue={[{ product: mockProduct, quantity: 3 }]}
-      >
-        <Cart />
-      </CartContextProvider>
+      <MockCartContextProvider removeItem={removeItem}>
+        {mockCartItem}
+      </MockCartContextProvider>
     );
+    const removeButton = screen.getByRole("button");
+
+    await userEvent.click(removeButton);
+
+    expect(removeItem).toHaveBeenCalledWith(0, 3);
   });
 });
