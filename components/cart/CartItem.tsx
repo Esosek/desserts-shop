@@ -30,6 +30,7 @@ export default function CartItem({ product, quantity }: CartItemProps) {
       <button
         onClick={handleRemoveClick}
         className="group rounded-full border-2 p-[2px] border-rose-300 hover:border-rose-500"
+        data-testid="remove-button"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

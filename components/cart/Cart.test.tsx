@@ -1,5 +1,5 @@
 import { screen, render } from "@testing-library/react";
-import event from "@testing-library/user-event";
+import event, { userEvent } from "@testing-library/user-event";
 
 import Cart from "./Cart";
 import MockCartContextProvider from "@/context/MockCartContext";
@@ -110,5 +110,19 @@ describe("Cart", () => {
 
     expect(document.body.style.overflow).toBe("auto");
     expect(cartItemElements).toHaveLength(0);
+  });
+
+  test("does NOT render a cart item when its remove buttton is clicked", async () => {
+    render(
+      <CartContextProvider initialValue={mockInitialData}>
+        <Cart />
+      </CartContextProvider>
+    );
+    const removeButtons = screen.getAllByTestId("remove-button");
+
+    await userEvent.click(removeButtons[0]);
+    const cartItemElements = screen.queryAllByRole("listitem");
+
+    expect(cartItemElements.length).toBe(1);
   });
 });
