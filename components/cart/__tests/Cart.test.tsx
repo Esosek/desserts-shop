@@ -1,5 +1,5 @@
 import { screen, render } from "@testing-library/react";
-import event, { userEvent } from "@testing-library/user-event";
+import { userEvent } from "@testing-library/user-event";
 
 import Cart from "../Cart";
 import MockCartContextProvider from "@/context/MockCartContext";
@@ -86,7 +86,7 @@ describe("Cart", () => {
     );
 
     const confirmButton = screen.getByRole("button", { name: "Confirm Order" });
-    await event.click(confirmButton);
+    await userEvent.click(confirmButton);
     const confirmModal = screen.getByText(/confirmed/i);
 
     expect(document.body.style.overflow).toBe("hidden");
@@ -101,11 +101,11 @@ describe("Cart", () => {
     );
 
     const confirmButton = screen.getByRole("button", { name: /confirm/i });
-    await event.click(confirmButton);
+    await userEvent.click(confirmButton);
     const closeModalBtn = screen.getByRole("button", {
       name: /new order/i,
     });
-    await event.click(closeModalBtn);
+    await userEvent.click(closeModalBtn);
     const cartItemElements = screen.queryAllByRole("listitem");
 
     expect(document.body.style.overflow).toBe("auto");
