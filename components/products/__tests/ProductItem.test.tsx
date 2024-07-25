@@ -10,10 +10,10 @@ describe("ProductItem", () => {
   const mockProduct: Product = {
     id: 0,
     image: {
-      thumbnail: "",
-      mobile: "",
-      tablet: "",
-      desktop: "",
+      thumbnail: "/assets/images/image-creme-brulee-thumbnail.jpg",
+      mobile: "/assets/images/image-creme-brulee-mobile.jpg",
+      tablet: "/assets/images/image-creme-brulee-tablet.jpg",
+      desktop: "/assets/images/image-creme-brulee-desktop.jpg",
     },
     name: "Test product",
     category: "testing",
