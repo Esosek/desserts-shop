@@ -25,6 +25,11 @@ const config: Config = {
       semibold: "600",
       bold: "700",
     },
+    extend: {
+      screens: {
+        md: "870px",
+      },
+    },
   },
   plugins: [],
 };
