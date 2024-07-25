@@ -24,12 +24,12 @@ export default function ProductList({ products }: ProductListProps) {
   }
   return (
     <div className="w-full">
-      <div className="flex flex-col justify-between items-center gap-2 my-6 md:flex-row">
+      <div className="sticky top-0 z-10 flex flex-col justify-between items-center gap-2 py-6 md:flex-row bg-rose-50">
         <h1 className="font-bold text-3xl">Desserts</h1>
         <ProductFilter products={products} onFilterChanged={onFilterChanged} />
       </div>
 
-      <ul className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-x-5 gap-y-7">
+      <ul className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-x-5 gap-y-7 max-h-full p-1">
         {filteredProducts.map((product) => (
           <ProductItem key={product.name} product={product} />
         ))}

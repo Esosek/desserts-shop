@@ -35,7 +35,7 @@ export default function Cart() {
   if (items.length > 0) {
     content = (
       <>
-        <ul>
+        <ul className="max-h-80 overflow-y-auto pr-4">
           {items.map((item) => (
             <CartItem
               key={item.product.id}
@@ -66,7 +66,7 @@ export default function Cart() {
         <ConfirmModal totalPrice={totalPrice} onClose={closeModal} />
       )}
 
-      <div className=" bg-white my-4 px-6 w-full rounded-md md:my-0 md:w-auto md:min-w-96">
+      <div className=" sticky top-16 bg-white my-4 px-6 w-full rounded-md md:my-0 md:w-auto md:min-w-96">
         <h2 className="justify-self-start text-red-500 text-2xl font-bold mt-6 mb-2">
           Your Cart ({cartItemQuantity})
         </h2>
