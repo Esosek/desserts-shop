@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useContext } from "react";
 
+import styles from "./ConfirmModal.module.css";
 import CartContext from "@/context/CartContext";
 import iconCheck from "@/public/assets/images/icon-order-confirmed.svg";
 import PrimaryButton from "../ui/PrimaryButton";
@@ -20,10 +21,12 @@ export default function ConfirmModal({
     <>
       <div
         onClick={onClose}
-        className="fixed top-0 bottom-0 w-full bg-black/50"
+        className={`${styles.backdrop} fixed top-0 bottom-0 w-full bg-black/50`}
         data-testid="backdrop"
       ></div>
-      <div className="fixed bottom-0 bg-white w-full max-w-md rounded-xl py-4 px-8 sm:bottom-auto">
+      <div
+        className={`${styles.modal} fixed bottom-0 bg-white w-full max-w-md rounded-xl py-4 px-8 sm:bottom-auto`}
+      >
         <Image src={iconCheck} alt="Checkout icon" className="size-8 my-4" />
         <h2 className="font-bold my-2 text-3xl">Order Confirmed</h2>
         <p className="text-rose-400 text-sm">We hope you enjoy your food!</p>
