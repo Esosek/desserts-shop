@@ -21,11 +21,11 @@ export default function ConfirmModal({
     <>
       <div
         onClick={onClose}
-        className={`${styles.backdrop} fixed top-0 bottom-0 w-full bg-black/50`}
+        className={`${styles.backdrop} fixed z-40 top-0 bottom-0 w-full bg-black/50`}
         data-testid="backdrop"
       ></div>
       <div
-        className={`${styles.modal} fixed bottom-0 bg-white w-full max-w-md rounded-xl py-4 px-8 sm:bottom-auto`}
+        className={`${styles.modal} fixed z-40 bottom-0 bg-white w-full max-w-md rounded-xl py-4 px-8 sm:bottom-auto`}
       >
         <Image src={iconCheck} alt="Checkout icon" className="size-8 my-4" />
         <h2 className="font-bold my-2 text-3xl">Order Confirmed</h2>
