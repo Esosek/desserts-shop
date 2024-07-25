@@ -34,14 +34,14 @@ describe("ProductList", () => {
     render(<ProductList products={mockProducts} />);
     const productElements = screen.getAllByRole("listitem");
 
-    expect(productElements.length).toBe(2);
+    expect(productElements).toHaveLength(2);
   });
 
   test("does NOT render any list items if products are empty", () => {
     render(<ProductList products={[]} />);
     const productElements = screen.queryAllByRole("listitem");
 
-    expect(productElements.length).toBe(0);
+    expect(productElements).toHaveLength(0);
   });
 
   test("renders only single category when filtered", async () => {
@@ -50,6 +50,6 @@ describe("ProductList", () => {
     await userEvent.selectOptions(screen.getByRole("combobox"), ["category 2"]);
     const productElements = screen.getAllByRole("listitem");
 
-    expect(productElements.length).toBe(1);
+    expect(productElements).toHaveLength(1);
   });
 });

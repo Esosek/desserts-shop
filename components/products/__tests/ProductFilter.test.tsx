@@ -15,7 +15,7 @@ describe("ProductFilter", () => {
     const optionElements = screen.getAllByRole("option");
 
     // 2 test products + "none"
-    expect(optionElements.length).toBe(3);
+    expect(optionElements).toHaveLength(3);
   });
 
   test("calls onFilterChanged when user select a category", async () => {
@@ -36,6 +36,6 @@ describe("ProductFilter", () => {
     render(<ProductFilter products={[]} onFilterChanged={onFilterChanged} />);
     const optionElements = screen.getAllByRole("option");
 
-    expect(optionElements.length).toBe(1);
+    expect(optionElements).toHaveLength(1);
   });
 });

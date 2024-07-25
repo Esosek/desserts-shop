@@ -42,7 +42,7 @@ describe("Cart", () => {
 
     const cartItems = screen.queryAllByRole("listitem");
 
-    expect(cartItems.length).toBeGreaterThan(0);
+    expect(cartItems).toHaveLength(2);
   });
 
   test("renders confirm button when cart is NOT empty", () => {
@@ -118,6 +118,6 @@ describe("Cart", () => {
     await userEvent.click(removeButtons[0]);
     const cartItemElements = screen.queryAllByRole("listitem");
 
-    expect(cartItemElements.length).toBe(1);
+    expect(cartItemElements).toHaveLength(1);
   });
 });

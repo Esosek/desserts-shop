@@ -23,7 +23,7 @@ describe("ConfirmModal", () => {
     expect(iconElement).toBeInTheDocument();
     expect(confirmTextElement).toBeInTheDocument();
     expect(newOrderButton).toBeInTheDocument();
-    expect(productItemElements.length).toBeGreaterThan(0);
+    expect(productItemElements).toHaveLength(2);
   });
 
   test("renders correct total price", () => {
