@@ -67,7 +67,7 @@ export default function Cart() {
       )}
 
       <div className=" bg-white my-4 px-6 w-full rounded-md md:my-0 md:w-auto md:min-w-96">
-        <h2 className="justify-self-start text-red-400 text-2xl font-bold mt-6 mb-2">
+        <h2 className="justify-self-start text-red-500 text-2xl font-bold mt-6 mb-2">
           Your Cart ({cartItemQuantity})
         </h2>
         {content}

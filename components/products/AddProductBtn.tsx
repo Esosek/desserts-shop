@@ -21,7 +21,7 @@ export default function AddProductBtn({
   const handleAddItem = () => addItem(product);
 
   return quantity > 0 ? (
-    <div className="flex items-center justify-between gap-2 min-w-40 w-fit mx-auto text-rose-50 bg-red-400 border-red-400 font-semibold text-sm border-[1px] rounded-full py-3 px-3 -translate-y-5">
+    <div className="flex items-center justify-between gap-2 min-w-40 w-fit mx-auto text-rose-50 bg-red-500 border-red-500 font-semibold text-sm border-[1px] rounded-full py-3 px-3 -translate-y-5">
       <button
         onClick={handleDecrement}
         className="group size-5 rounded-full border-[1px] border-rose-50 p-1 hover:bg-rose-50"
@@ -33,7 +33,7 @@ export default function AddProductBtn({
           height="2"
           fill="none"
           viewBox="0 0 10 2"
-          className="group-hover:stroke-red-400"
+          className="group-hover:stroke-red-500"
         >
           <path fill="#fff" d="M0 .375h10v1.25H0V.375Z" />
         </svg>
@@ -50,7 +50,7 @@ export default function AddProductBtn({
           height="10"
           fill="none"
           viewBox="0 0 10 10"
-          className="group-hover:stroke-red-400"
+          className="group-hover:stroke-red-500"
         >
           <path
             fill="#fff"
@@ -62,7 +62,7 @@ export default function AddProductBtn({
   ) : (
     <button
       onClick={handleAddItem}
-      className="flex items-center justify-center gap-2 min-w-40 mx-auto bg-white border-rose-400 font-semibold text-sm border-[1px] rounded-full py-3 px-6 -translate-y-5 hover:text-red-400 hover:border-red transition-colors duration-100"
+      className="flex items-center justify-center gap-2 min-w-40 mx-auto bg-white border-rose-400 font-semibold text-sm border-[1px] rounded-full py-3 px-6 -translate-y-5 hover:text-red-500 hover:border-red transition-colors duration-100"
     >
       <Image src={iconCart} alt="Cart icon" />
       Add to Cart

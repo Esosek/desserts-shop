@@ -46,7 +46,7 @@ export default function ConfirmModal({
                   <p className="mb-1 font-semibold text-ellipsis line-clamp-1">
                     {item.product.name}
                   </p>
-                  <p className="text-red-400 font-semibold">
+                  <p className="text-red-500 font-semibold">
                     {item.quantity}x
                     <span className="ml-4 text-rose-400 font-normal">
                       @ ${item.product.price.toFixed(2)}

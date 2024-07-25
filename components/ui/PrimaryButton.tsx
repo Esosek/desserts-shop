@@ -12,7 +12,7 @@ export default function PrimaryButton({
   return (
     <button
       onClick={onClick}
-      className="bg-red-400 w-full text-rose-50 rounded-full p-3 my-6 shadow-md hover:bg-red-700 transition-colors duration-100"
+      className="bg-red-500 w-full text-rose-50 rounded-full p-3 my-6 shadow-md hover:bg-red-700 transition-colors duration-100"
     >
       {children}
     </button>

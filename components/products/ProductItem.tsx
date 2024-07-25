@@ -24,7 +24,7 @@ export default function ProductItem({ product }: ProductItemProps) {
     <li className="w-full">
       <div
         className={`${
-          isSelected ? "ring-2 ring-red-400" : undefined
+          isSelected ? "ring-2 ring-red-500" : undefined
         } w-full rounded-md overflow-clip`}
       >
         <picture className="block relative h-60">
@@ -47,7 +47,7 @@ export default function ProductItem({ product }: ProductItemProps) {
       <AddProductBtn product={product} quantity={quantity ?? 0} />
       <p className="text-sm text-rose-300 mb-1">{product.category}</p>
       <h2 className="font-semibold">{product.name}</h2>
-      <p className="text-red-400 font-semibold">${product.price.toFixed(2)}</p>
+      <p className="text-red-500 font-semibold">${product.price.toFixed(2)}</p>
     </li>
   );
 }
