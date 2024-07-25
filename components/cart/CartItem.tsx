@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import { Product } from "@/types/Product.types";
 import CartContext from "@/context/CartContext";
@@ -10,12 +10,25 @@ type CartItemProps = {
 
 export default function CartItem({ product, quantity }: CartItemProps) {
   const { removeItem } = useContext(CartContext);
+  const [isCleared, setIsCleared] = useState(false);
   const totalProductPrice = (product.price * quantity).toFixed(2);
 
-  const handleRemoveClick = () => removeItem(product.id, quantity);
+  const animationStyle =
+    "-translate-x-full opacity-0 transition-all duration-300 ease-out";
+
+  function handleRemoveClick() {
+    setIsCleared(true);
+    setTimeout(() => {
+      removeItem(product.id, quantity);
+    }, 300);
+  }
 
   return (
-    <li className="flex justify-between items-center border-b-[1px] border-rose-100 py-4">
+    <li
+      className={`flex justify-between items-center border-b-[1px] border-rose-100 py-4 ${
+        isCleared && animationStyle
+      }`}
+    >
       <div className="text-sm">
         <h3 className="font-semibold">{product.name}</h3>
         <p className="space-x-2">

@@ -35,7 +35,7 @@ export default function Cart() {
   if (items.length > 0) {
     content = (
       <>
-        <ul className="max-h-80 overflow-y-auto pr-4">
+        <ul className="max-h-80 overflow-y-auto overflow-x-hidden pr-4">
           {items.map((item) => (
             <CartItem
               key={item.product.id}
