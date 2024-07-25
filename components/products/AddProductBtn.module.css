@@ -1,0 +1,14 @@
+.controlBtn {
+  transform-origin: top;
+  animation: rotate-to-base 100ms forwards;
+}
+
+@keyframes rotate-to-base {
+  from {
+    rotate: x -90deg;
+  }
+
+  to {
+    rotate: x 0deg;
+  }
+}
