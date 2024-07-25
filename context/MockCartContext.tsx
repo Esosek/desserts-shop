@@ -26,6 +26,7 @@ export default function MockCartContextProvider({
   );
 }
 
+/** Provides an array of two products with different quantities */
 export const mockData = [
   { product: { ...productData[0], id: 0 }, quantity: 2 },
   { product: { ...productData[1], id: 1 }, quantity: 1 },
