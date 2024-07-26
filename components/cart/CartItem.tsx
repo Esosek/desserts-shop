@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 
+import styles from "./CartItem.module.css";
 import { ProductQuantity } from "@/types/Product.types";
 import CartContext from "@/context/CartContext";
 
@@ -24,7 +25,9 @@ export default function CartItem({ product }: CartItemProps) {
 
   return (
     <li
-      className={`flex justify-between items-center border-b-[1px] border-rose-100 py-4 ${
+      className={`${
+        styles.cartItem
+      } flex justify-between items-center border-b-[1px] border-rose-100 py-4 ${
         isCleared && animationStyle
       }`}
     >

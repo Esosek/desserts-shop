@@ -1,0 +1,17 @@
+.cartItem {
+  animation: scale-in 300ms ease-in-out forwards;
+}
+
+@keyframes scale-in {
+  0% {
+    scale: 0;
+  }
+
+  80% {
+    scale: 1.015;
+  }
+
+  100% {
+    scale: 1;
+  }
+}
