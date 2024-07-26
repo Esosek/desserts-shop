@@ -44,7 +44,7 @@ describe("ProductItem", () => {
 
   test("renders quantity and control buttons when product is in cart", () => {
     render(
-      <MockCartContextProvider items={[{ product: mockProduct, quantity: 3 }]}>
+      <MockCartContextProvider items={[{ ...mockProduct, quantity: 3 }]}>
         <ProductItem product={mockProduct} />
       </MockCartContextProvider>
     );

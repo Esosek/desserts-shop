@@ -14,7 +14,7 @@ export default function ProductItem({ product }: ProductItemProps) {
   const { items } = useContext(CartContext);
 
   const quantity = useMemo(() => {
-    const item = items.find((item) => item.product.id === product.id);
+    const item = items.find((item) => item.id === product.id);
     return item ? item.quantity : 0;
   }, [items, product.id]);
 

@@ -7,10 +7,7 @@ describe("ProductFilter", () => {
   const onFilterChanged = jest.fn();
   test("renders options for all product categories", () => {
     render(
-      <ProductFilter
-        products={mockData.map((mock) => mock.product)}
-        onFilterChanged={onFilterChanged}
-      />
+      <ProductFilter products={mockData} onFilterChanged={onFilterChanged} />
     );
     const optionElements = screen.getAllByRole("option");
 
@@ -20,10 +17,7 @@ describe("ProductFilter", () => {
 
   test("calls onFilterChanged when user select a category", async () => {
     render(
-      <ProductFilter
-        products={mockData.map((mock) => mock.product)}
-        onFilterChanged={onFilterChanged}
-      />
+      <ProductFilter products={mockData} onFilterChanged={onFilterChanged} />
     );
     const selectElement = screen.getByRole("combobox");
 

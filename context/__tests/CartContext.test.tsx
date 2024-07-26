@@ -27,8 +27,8 @@ describe("CartContext", () => {
         <ul>
           {items.map((item) => {
             return (
-              <li key={item.product.id}>
-                <p>{item.product.name}</p>
+              <li key={item.id}>
+                <p>{item.name}</p>
                 <p>{item.quantity}</p>
               </li>
             );
@@ -81,9 +81,7 @@ describe("CartContext", () => {
 
   test("increments a quantity of an existing product when addItem is called", async () => {
     render(
-      <CartContextProvider
-        initialValue={[{ product: mockProduct, quantity: 2 }]}
-      >
+      <CartContextProvider initialValue={[{ ...mockProduct, quantity: 2 }]}>
         <TestingComponent />
       </CartContextProvider>
     );
@@ -99,9 +97,7 @@ describe("CartContext", () => {
 
   test("decrements a quantity of a product by 1 when removeItem is called if its bigger than 1", async () => {
     render(
-      <CartContextProvider
-        initialValue={[{ product: mockProduct, quantity: 3 }]}
-      >
+      <CartContextProvider initialValue={[{ ...mockProduct, quantity: 3 }]}>
         <TestingComponent />
       </CartContextProvider>
     );
@@ -117,9 +113,7 @@ describe("CartContext", () => {
 
   test("removes a product from cart when removeItem is called with quantity equal to current quantity ", async () => {
     render(
-      <CartContextProvider
-        initialValue={[{ product: mockProduct, quantity: 3 }]}
-      >
+      <CartContextProvider initialValue={[{ ...mockProduct, quantity: 3 }]}>
         <TestingComponent />
       </CartContextProvider>
     );

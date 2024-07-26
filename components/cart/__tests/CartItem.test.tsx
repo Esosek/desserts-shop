@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 
 import CartItem from "../CartItem";
@@ -16,9 +16,10 @@ describe("CartItem", () => {
     name: "Waffle with Berries",
     category: "Waffle",
     price: 6.5,
+    quantity: 3,
   };
 
-  const mockCartItem = <CartItem product={mockProduct} quantity={3} />;
+  const mockCartItem = <CartItem product={mockProduct} />;
 
   test("renders product details and quantity", () => {
     render(mockCartItem);
@@ -50,6 +51,11 @@ describe("CartItem", () => {
 
     await userEvent.click(removeButton);
 
-    expect(removeItem).toHaveBeenCalledWith(0, 3);
+    waitFor(
+      () => {
+        expect(removeItem).toHaveBeenCalledWith(0, 3);
+      },
+      { timeout: 500 }
+    );
   });
 });

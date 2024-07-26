@@ -32,9 +32,7 @@ export function CartContextProvider({
 
   function addItem(product: Product) {
     setItems((prevItems) => {
-      const itemIndex = prevItems.findIndex(
-        (item) => item.product.id === product.id
-      );
+      const itemIndex = prevItems.findIndex((item) => item.id === product.id);
 
       // Increase quantity
       if (itemIndex > -1) {
@@ -47,13 +45,13 @@ export function CartContextProvider({
       }
 
       // Add new item
-      return [...prevItems, { product: product, quantity: 1 }];
+      return [...prevItems, { ...product, quantity: 1 }];
     });
   }
 
   function removeItem(id: number, quantity = 1) {
     setItems((prevItems) => {
-      const itemIndex = prevItems.findIndex((item) => item.product.id === id);
+      const itemIndex = prevItems.findIndex((item) => item.id === id);
 
       if (itemIndex < -1) {
         return prevItems;
@@ -69,7 +67,7 @@ export function CartContextProvider({
         return updatedItems;
       }
       // Remove the item completely
-      return prevItems.filter((item) => item.product.id !== id);
+      return prevItems.filter((item) => item.id !== id);
     });
   }
 

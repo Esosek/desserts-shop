@@ -34,30 +34,30 @@ export default function ConfirmModal({
           <ul className="overflow-y-scroll max-h-64">
             {cartCtx.items.map((item) => (
               <li
-                key={item.product.id}
+                key={item.id}
                 className="grid grid-cols-[auto_1fr_auto] gap-3 items-center border-b-[1px] border-rose-300/25 py-4"
               >
                 <div className="relative size-10 rounded-md overflow-clip">
                   <Image
-                    src={item.product.image.thumbnail}
-                    alt={`Thumbnail of ${item.product.name}`}
+                    src={item.image.thumbnail}
+                    alt={`Thumbnail of ${item.name}`}
                     fill
                     sizes="2.5rem"
                   />
                 </div>
                 <div>
                   <p className="mb-1 font-semibold text-ellipsis line-clamp-1">
-                    {item.product.name}
+                    {item.name}
                   </p>
                   <p className="text-red-500 font-semibold">
                     {item.quantity}x
                     <span className="ml-4 text-rose-400 font-normal">
-                      @ ${item.product.price.toFixed(2)}
+                      @ ${item.price.toFixed(2)}
                     </span>
                   </p>
                 </div>
                 <p className="font-semibold">
-                  ${(item.quantity * item.product.price).toFixed(2)}
+                  ${(item.quantity * item.price).toFixed(2)}
                 </p>
               </li>
             ))}

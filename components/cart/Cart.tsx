@@ -16,7 +16,7 @@ export default function Cart() {
 
   const cartItemQuantity = items.reduce((acc, item) => acc + item.quantity, 0);
   const totalPrice = items
-    .reduce((acc, item) => acc + item.quantity * item.product.price, 0)
+    .reduce((acc, item) => acc + item.quantity * item.price, 0)
     .toFixed(2);
 
   function handleConfirm() {
@@ -37,11 +37,7 @@ export default function Cart() {
       <>
         <ul className="max-h-80 overflow-y-auto overflow-x-hidden pr-4">
           {items.map((item) => (
-            <CartItem
-              key={item.product.id}
-              product={item.product}
-              quantity={item.quantity}
-            />
+            <CartItem key={item.id} product={item} />
           ))}
         </ul>
         <div className="flex justify-between items-center my-4">

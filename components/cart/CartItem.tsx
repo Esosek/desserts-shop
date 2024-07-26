@@ -1,17 +1,16 @@
 import { useContext, useState } from "react";
 
-import { Product } from "@/types/Product.types";
+import { ProductQuantity } from "@/types/Product.types";
 import CartContext from "@/context/CartContext";
 
 type CartItemProps = {
-  product: Product;
-  quantity: number;
+  product: ProductQuantity;
 };
 
-export default function CartItem({ product, quantity }: CartItemProps) {
+export default function CartItem({ product }: CartItemProps) {
   const { removeItem } = useContext(CartContext);
   const [isCleared, setIsCleared] = useState(false);
-  const totalProductPrice = (product.price * quantity).toFixed(2);
+  const totalProductPrice = (product.price * product.quantity).toFixed(2);
 
   const animationStyle =
     "-translate-x-full opacity-0 transition-all duration-300 ease-out";
@@ -19,7 +18,7 @@ export default function CartItem({ product, quantity }: CartItemProps) {
   function handleRemoveClick() {
     setIsCleared(true);
     setTimeout(() => {
-      removeItem(product.id, quantity);
+      removeItem(product.id, product.quantity);
     }, 300);
   }
 
@@ -32,7 +31,9 @@ export default function CartItem({ product, quantity }: CartItemProps) {
       <div className="text-sm">
         <h3 className="font-semibold">{product.name}</h3>
         <p className="space-x-2">
-          <span className="text-red-500 font-semibold">{quantity}x </span>
+          <span className="text-red-500 font-semibold">
+            {product.quantity}x{" "}
+          </span>
           <span className="text-rose-400">@ ${product.price.toFixed(2)} </span>
           <span className="text-rose-500 font-semibold">
             ${totalProductPrice}

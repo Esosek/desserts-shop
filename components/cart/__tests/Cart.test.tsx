@@ -1,4 +1,4 @@
-import { screen, render } from "@testing-library/react";
+import { screen, render, waitFor } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 
 import Cart from "../Cart";
@@ -21,7 +21,7 @@ describe("Cart", () => {
     expect(emptyCartText).toBeInTheDocument();
   });
 
-  test("does not render confirm button when cart is empty", () => {
+  test("does NOT render confirm button when cart is empty", () => {
     render(
       <MockCartContextProvider items={[]}>
         <Cart />
@@ -64,7 +64,7 @@ describe("Cart", () => {
       </MockCartContextProvider>
     );
     const totalPrice = mockData.reduce(
-      (acc: number, value) => acc + value.quantity * value.product.price,
+      (acc: number, value) => acc + value.quantity * value.price,
       0
     );
 
@@ -116,8 +116,12 @@ describe("Cart", () => {
     const removeButtons = screen.getAllByTestId("remove-button");
 
     await userEvent.click(removeButtons[0]);
-    const cartItemElements = screen.queryAllByRole("listitem");
-
-    expect(cartItemElements).toHaveLength(1);
+    await waitFor(
+      () => {
+        const cartItemElements = screen.queryAllByRole("listitem");
+        expect(cartItemElements).toHaveLength(1);
+      },
+      { timeout: 500 }
+    );
   });
 });
